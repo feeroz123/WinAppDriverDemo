@@ -24,7 +24,7 @@ public class Base {
 	public static DesiredCapabilities caps;
 	Utilities utls = new Utilities();
 	
-	private final static Logger log = LogManager.getLogger(Base.class.getName());
+	private final Logger log = LogManager.getLogger(Base.class.getName());
 	
 	/***
 	 * Method to launch the WinAppDriver.exe
@@ -90,7 +90,7 @@ public class Base {
 	 */
 	public  void clickByClassName(String str_ClassName, String Str_description) {
 		try {
-			//waitTillElementIsClickable(str_ClassName);
+
 
 			driver.findElementByClassName(str_ClassName).click();
 			log.debug("Clicked on: " + Str_description);
@@ -207,7 +207,7 @@ public class Base {
 	 */
 	public void waitTillElementIsClickable(String Str_ElementXpath) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 3);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Str_ElementXpath)));
 			log.debug("Waited for clickability of: " + Str_ElementXpath);
 		} catch (Exception e) {

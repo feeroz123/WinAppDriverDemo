@@ -2,6 +2,7 @@ package pageMethods;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 
 import base.Base;
 import pageObjectsRepo.LoginPageObj;
@@ -10,7 +11,7 @@ public class LoginPageMethods extends Base {
 
 	LoginPageObj lpObj = new LoginPageObj();
 
-	private static final Logger log = LogManager.getLogger(LoginPageMethods.class.getName());
+	private final Logger log = LogManager.getLogger(LoginPageMethods.class.getName());
 
 	public boolean login() {
 		log.info("Performing login into the application");
@@ -18,7 +19,7 @@ public class LoginPageMethods extends Base {
 		try {
 			
 			// STEPS TO LOGIN IN TO APPLICATION
-			System.out.println("Logged into application");
+			log.info("Logged into application");
 			
 			return true;
 		} catch (Exception e) {
@@ -28,5 +29,6 @@ public class LoginPageMethods extends Base {
 		}
 
 	}
+
 
 }

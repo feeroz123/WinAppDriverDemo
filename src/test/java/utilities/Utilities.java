@@ -17,7 +17,7 @@ import io.appium.java_client.windows.WindowsDriver;
 public class Utilities {
 	
 	public Desktop desktop;
-	private final static Logger log = LogManager.getLogger(Utilities.class.getName());
+	private final Logger log = LogManager.getLogger(Utilities.class.getName());
 	
 	/***
 	 * Method to start WinAppDriver server

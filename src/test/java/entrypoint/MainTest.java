@@ -2,15 +2,14 @@ package entrypoint;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import base.Base;
-import pageMethods.LoginPageMethods;
+import pageMethods.CommonMethods;
+import pageObjectsRepo.CommonObjects;
 import utilities.Utilities;
 
 public class MainTest extends Base {
@@ -19,8 +18,9 @@ public class MainTest extends Base {
 	 * Reference:
 	 * https://www.automatetheplanet.com/automate-windows-desktop-apps-winappdriver/
 	 */
-
-	LoginPageMethods lpM = new LoginPageMethods();
+	
+	CommonObjects cObj= new CommonObjects();
+	CommonMethods cM = new CommonMethods();	
 	Utilities utls = new Utilities();
 
 	@BeforeClass
@@ -31,20 +31,11 @@ public class MainTest extends Base {
 	}
 
 	@Test (priority = 0)
-	public void loginTest() {
-		Assert.assertTrue(lpM.login(), "Login into application failed");
-	}
-
-	@Test (priority = 1)
-	public void firstTest() {
-		driver.findElementByName("Clear").click();
-		driver.findElementByName("Five").click();
-		driver.findElementByName("Plus").click();
-		driver.findElementByName("Six").click();
-		driver.findElementByName("Equals").click();
+	public void additionTest() {		
+		String expectedResult = "11";
+		String actualResult = cM.add(5,6);
 		
-		String result = driver.findElement(By.xpath("//*[@AutomationId='CalculatorResults']")).getText();
-		Assert.assertEquals(result, "Display is 11");
+		Assert.assertEquals(actualResult, expectedResult);
 	}
 
 	@AfterClass
